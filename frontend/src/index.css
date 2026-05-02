@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.inter {
+  font-family: "Inter", sans-serif;
+}
+.cinzel {
+  font-family: "Cinzel", serif;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-[#386caf] text-white px-5 py-2 rounded-lg
+         hover:bg-[#4b7ab7]
+         active:bg-[#32619d]
+         transition-all duration-300;
+}
+
+.btn-outline {
+  @apply border border-[#386caf] text-[#386caf]
+         px-5 py-2 rounded-lg
+         hover:bg-[#386caf] hover:text-white
+         transition-all duration-300;
+}
