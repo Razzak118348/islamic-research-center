@@ -73,9 +73,10 @@ const Navbar = () => {
               className="object-cover w-full h-full"
             />
           </div>
-          <span className="text-md md:text-xl font-extrabold tracking-tight text-gray-800 ">
-            Islamic Research <span className="text-yellow-500">Center</span>
-          </span>
+          <div className="flex flex-col">
+              <span className="arabic-font text-yellow-500 text-lg font-semibold leading-tight">مركز البحوث الإسلامية</span>
+              <span className="text-gray-700 text-md font-bold font-inter">Islamic Research <span className="text-yellow-500 italic ">Center</span></span>
+            </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -187,10 +188,13 @@ const Navbar = () => {
                   <button
                     onClick={LogOut}
                     className="
-              w-full py-2 text-sm font-medium
-              rounded-lg
-              text-white bg: bg-yellow-500 hover:bg-yellow-800 active:scale-95 transition-all shadow-lg
-
+     btn-luxury
+    w-full py-2 px-6 text-sm font-semibold
+    rounded-[34px] border-2 border-yellow-500
+    text-yellow-600 bg-transparent
+    hover:text-black hover:bg-yellow-500 hover:scale-110 hover:shadow-[3px_3px_0px_0px_#000000,6px_6px_0px_0px_#ff0000]
+    active:scale-100
+    transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]
             "
                   >
                     Logout

@@ -19,7 +19,7 @@ const Layout = () => {
       <main
         className="
           pt-16 lg:pt-16
-          max-w-7xl mx-auto px-6
+     w-full mx-auto
 min-h-[calc(100vh-10rem)]
         "
       >
