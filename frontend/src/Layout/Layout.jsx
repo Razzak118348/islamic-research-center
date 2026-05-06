@@ -20,7 +20,7 @@ const Layout = () => {
         className="
           pt-16 lg:pt-16
           max-w-7xl mx-auto px-6
-          min-h-[calc(100vh-240px)]
+min-h-[calc(100vh-10rem)]
         "
       >
         <Outlet />

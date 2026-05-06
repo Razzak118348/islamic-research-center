@@ -59,9 +59,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 px-3 left-0 w-full z-[100] transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-lg py-2" : "bg-gray-100 py-4"
-      }`}
+      className={`fixed top-0 px-3 left-0 w-full z-[100] transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-lg py-2" : "bg-gray-100 py-4"
+        }`}
     >
       <div className=" max-w-7xl mx-auto flex items-center justify-between">
 
@@ -147,33 +146,75 @@ const Navbar = () => {
         </ul>
 
         {/* User Actions */}
-        <div className="flex items-center gap-4">
+        <div className="relative group hidden md:flex">
           {user ? (
-            <div className="flex items-center gap-3 bg-gray-200/50 p-1.5 pr-4 rounded-full group cursor-pointer relative">
-               <img
-                src={user.photoURL}
-                className="w-8 h-8 rounded-full ring-2 ring-emerald-500"
-                alt="Profile"
-              />
-              <div className="hidden sm:block">
-                <p className="text-xs font-bold text-gray-800 leading-none">{user.displayName}</p>
-                <button onClick={LogOut} className="text-[10px] text-red-500 hover:underline">Logout</button>
+            <div className="relative">
+              {/* Avatar */}
+              <div
+                className="w-10 h-10 rounded-full border-2 border-green-700 cursor-pointer overflow-hidden"
+                title={user?.displayName || "User"}
+              >
+                <img
+                  src={user?.photoURL || "https://cdn-icons-png.flaticon.com/512/219/219986.png"}
+                  alt="user"
+                  className="w-10 h-10 rounded-full border"
+                />
+              </div>
+
+              {/* Hover Card */}
+              <div
+                className="
+          absolute right-0 mt-3 w-52
+          bg-white dark:bg-gray-800
+          rounded-xl shadow-lg
+          border dark:border-gray-700
+          opacity-0 invisible
+          group-hover:opacity-100 group-hover:visible
+          transition-all duration-300
+          z-50
+        "
+              >
+                <div className="px-4 py-3 border-b dark:border-gray-700">
+                  <p className="text-sm font-semibold text-gray-800 dark:text-white">
+                    {user?.displayName || "User"}
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {user?.email}
+                  </p>
+                </div>
+
+                <div className="p-3">
+                  <button
+                    onClick={LogOut}
+                    className="
+              w-full py-2 text-sm font-medium
+              rounded-lg
+              text-white bg: bg-yellow-500 hover:bg-yellow-800 active:scale-95 transition-all shadow-lg
+
+            "
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
             </div>
           ) : (
-            <Link to="/login" className="px-6 py-2 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600 transition-all shadow-md active:scale-95">
+            <Link
+              to="/login"
+              className="px-4 py-2 rounded-lg text-white bg: bg-yellow-400 hover:bg-yellow-500 active:scale-95 transition-all shadow-lg"
+            >
               Login
             </Link>
           )}
+        </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
+        {/* Mobile Menu Button */}
+<button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-3xl text-gray-700"
           >
             {mobileMenuOpen ? <HiX /> : <HiMenuAlt3 />}
           </button>
-        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -184,7 +225,7 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl z-[110] p-6 md:hidden"
+            className="fixed inset-y-0 right-0 w-2/3 max-w-3xl bg-white shadow-2xl z-[110] p-6 md:hidden"
           >
             <div className="flex justify-between items-center mb-8">
               <span className="font-bold text-lg">Menu</span>
@@ -225,10 +266,18 @@ const Navbar = () => {
                   )}
                 </li>
               ))}
+              <li>
+                {user && (
+
+                  <p className="font-semibold text-gray-800 py-2">User: {user.displayName}</p>
+
+                )}
+              </li>
             </ul>
 
             {user && (
-              <div className="mt-10 pt-6 border-t">
+              <div className="mt-8 pt-3 border-t">
+
                 <button
                   onClick={LogOut}
                   className="w-full flex items-center justify-center gap-2 p-3 bg-red-50 text-red-600 rounded-xl font-bold"
